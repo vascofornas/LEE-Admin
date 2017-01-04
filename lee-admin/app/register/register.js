@@ -8,7 +8,7 @@ angular.module ('myApp.register', ['ngRoute', 'firebase'])
         controller: 'RegisterCtrl'
     });
 }])
-.controller('RegisterCtrl', ['$scope','$firebaseAuth', function($scope,$firebaseAuth){
+.controller('RegisterCtrl', ['$scope','$firebaseAuth', '$location', function($scope,$firebaseAuth,$location){
 
     $scope.signUp = function(){
         var username = $scope.user.email;
@@ -17,7 +17,8 @@ angular.module ('myApp.register', ['ngRoute', 'firebase'])
         if (username && password){
             var auth = $firebaseAuth();
             auth.$createUserWithEmailAndPassword(username,password).then(function(){
-                console.log("Usuario creado")
+                console.log("Usuario creado");
+               $location.path('/home');
             }).catch(function(error){
                 $scope.errMsg = true;
                 $scope.errorMessage = error.message;

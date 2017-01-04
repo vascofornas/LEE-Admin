@@ -9,7 +9,9 @@ angular.module ('myApp.home', ['ngRoute', 'firebase'])
     });
 }])
 
-.controller('HomeCtrl', ['$scope','$firebaseAuth', function($scope,$firebaseAuth){
+.controller('HomeCtrl', ['$scope','$firebaseAuth', '$location','CommonProp', function($scope,$firebaseAuth,$location,CommonProp){
+
+    $scope.username = CommonProp.getUser();
 
     $scope.signIn = function(){
         var username = $scope.user.email;
@@ -18,6 +20,8 @@ angular.module ('myApp.home', ['ngRoute', 'firebase'])
 
         auth.$signInWithEmailAndPassword(username,password).then(function(){
             $scope.errMsg = false;
+            CommonProp.setUser($scope.user.email);
+            $location.path('/welcome');
         }).catch(function(error){
             $scope.errMsg = true;
             $scope.errorMessage = error.message;
@@ -25,3 +29,18 @@ angular.module ('myApp.home', ['ngRoute', 'firebase'])
     }
 
 }])
+
+.service('CommonProp', ['$location', function($location){
+
+    var user = "";
+
+    return {
+        getUser:function(){
+            return user;
+        },
+        setUser: function(value){
+            user = value;
+
+        }   
+     };
+}]);
