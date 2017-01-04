@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Nuevo enclave</title>
+    </head>
+    <body ng-controller="AddPostCtrl">
+              <nav class="container navbar-inverse">
+            <div class="navbar-inverse">
+                <div class="navbar-header">
+                    <a href="#" class="navbar-brand">La España Extraña</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="#/welcome" >Portada</a></li>
+                    <li class="active"><a href="#/addPost" >Crear enclave</a></li>
+                    <li><a href="#" >Salir</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+             <form role="form" name="postForm" novalidate="">
+                 <legend>Crear un nuevo enclave</legend>
+                 <div class="row">
+                     <div class="col-md5">
+                         <div class="form-group" ng-class="{'has-error': postForm.Nombre_enclave.$invalid && postForm.Nombre_enclave.$touched}">
+                             <label for"Nombre_enclave">Nombre del enclave</label>
+                             <input type="text" name="Nombre_enclave" class="form-control" ng-minlength="5" placeholder="Nombre del enclave" ng-model="article.titleTxt" required="">
+                             <small class="help-block" ng-show="postForm.Nombre_enclave.$error.minlength && postForm.Nombre_enclave.$touched">Por favor, escribe al menos 5 caracteres</small>
+                         </div>
+                         <div class="form-group" ng-class="{'has-error': postForm.Descripcion_enclave.$invalid && postForm.Descripcion_enclave.$touched}">
+                             <label for "Descripcion_enclave">Descripción del enclave</label>
+                             <textarea name="Descripcion_enclave" class="form-control" placeholder="Descripción del enclave" ng-minlength="20" ng-model="article.Descripcion_enclave" required=""></textarea>
+                               <small class="help-block" ng-show="postForm.Descripcion_enclave.$error.minlength && postForm.Descripcion_enclave.$touched">Por favor, escribe al menos 20 caracteres</small>
+                      
+                         </div>
+                         <div class="form-group">
+                                <button type="submit" class="btn btn-primary" data-ng-disabled="postForm.$invalid">Enviar enclave</button>
+                         </div>
+                                        
+               
+            </form>
+        </div>
+    </body>
+</html>
