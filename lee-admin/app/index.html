@@ -28,6 +28,19 @@
   -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angularfire/dist/angularfire.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCOOWLcawvjBg_3XSa3fiPknWVV8it8r_I",
+    authDomain: "la-espana-extrana.firebaseapp.com",
+    databaseURL: "https://la-espana-extrana.firebaseio.com",
+    storageBucket: "la-espana-extrana.appspot.com",
+    messagingSenderId: "495566586785"
+  };
+  firebase.initializeApp(config);
+</script>
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="app.js"></script>
   <script src="home/home.js"></script>
