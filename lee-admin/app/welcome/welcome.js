@@ -9,6 +9,10 @@ angular.module ('myApp.welcome', ['ngRoute', 'firebase'])
     });
 }])
 
-.controller('WelcomeCtrl', ['$scope', 'CommonProp', function($scope,CommonProp){
+.controller('WelcomeCtrl', ['$scope', 'CommonProp', '$firebaseArray', function($scope,CommonProp, $firebaseArray){
     $scope.username = CommonProp.getUser();
+
+    var ref = firebase.database().ref().child('Enclaves');
+    $scope.articles = $firebaseArray(ref);
+    console.log($scope.articles);
 }])
