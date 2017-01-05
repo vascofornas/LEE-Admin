@@ -12,6 +12,9 @@ angular.module ('myApp.home', ['ngRoute', 'firebase'])
 .controller('HomeCtrl', ['$scope','$firebaseAuth', '$location','CommonProp', function($scope,$firebaseAuth,$location,CommonProp){
 
     $scope.username = CommonProp.getUser();
+    if($scope.username){
+        $location.path('/welcome');
+    }
 
     $scope.signIn = function(){
         var username = $scope.user.email;

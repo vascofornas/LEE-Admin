@@ -9,7 +9,12 @@ angular.module ('myApp.addPost', ['ngRoute', 'firebase'])
     });
 }])
 
-.controller('AddPostCtrl', ['$scope', '$firebaseArray',function($scope, $firebaseArray){
+.controller('AddPostCtrl', ['$scope', '$firebaseArray','$location','CommonProp',function($scope, $firebaseArray,$location,CommonProp){
+    $scope.username = CommonProp.getUser();
+    if (!$scope.username){
+        $location.path('/home');
+    }
+
 
     var ref = firebase.database().ref().child('Enclaves');
     $scope.articles = $firebaseArray(ref);
