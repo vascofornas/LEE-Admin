@@ -23,6 +23,13 @@ angular.module ('myApp.addPost', ['ngRoute', 'firebase'])
             Descripcion_enclave: descripcion
         }).then(function(ref){
             console.log(ref);
+            $scope.success=true;
+            window.setTimeout(function(){
+                $scope.$apply(function(){
+                    $scope.success =false;
+                });
+               
+            }, 2000);
         }, function(error){
             console.log(error);
         });
