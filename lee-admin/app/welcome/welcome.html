@@ -30,7 +30,7 @@
                     <h4>{{article.Nombre_enclave}}</h4>
                     <p>{{article.Descripcion_enclave}}</p>
                     <button type="submit" class="btn btn-sm btn-primary" ng-click="editPost(article.$id)" data-target="#editModal" data-toggle="modal">Editar</button>
-                    <button type="submit" class="btn btn-sm btn-danger">Borrar</button>
+                    <button type="submit" class="btn btn-sm btn-danger" data-target="#deleteModal" data-toggle="modal">Borrar</button>
                 </div>
             </div>
         </div>
@@ -61,6 +61,24 @@
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div id="deleteModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <p>Seguro que quieres borrar este enclave?         </p>             
+
+                            </div>
+                        <div class="modal-body"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-sm btn-danger">Borrar</button>
+                            <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
+                            
     </body>
 </html>    
