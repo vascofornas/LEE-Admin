@@ -9,10 +9,27 @@ angular.module ('myApp.welcome', ['ngRoute', 'firebase'])
     });
 }])
 
-.controller('WelcomeCtrl', ['$scope', 'CommonProp', '$firebaseArray', function($scope,CommonProp, $firebaseArray){
+.controller('WelcomeCtrl', ['$scope', 'CommonProp', '$firebaseArray','$firebaseObject', function($scope,CommonProp, $firebaseArray, $firebaseObject){
     $scope.username = CommonProp.getUser();
 
     var ref = firebase.database().ref().child('Enclaves');
     $scope.articles = $firebaseArray(ref);
-    console.log($scope.articles);
+ 
+
+    $scope.editPost = function(id){
+        var ref = firebase.database().ref().child('Enclaves/' + id);
+        $scope.editPostData = $firebaseObject(ref);
+        console.log($scope.editPostData);
+    };
+    $scope.updatePost = function(id){
+        var ref = firebase.database().ref().child('Enclaves/' + id);
+        ref.update({
+            Nombre_enclave: $scope.editPostData.Nombre_enclave,
+            Descripcion_enclave: $scope.editPostData.Descripcion_enclave
+        }).then(function(ref){
+            $("#editModal").modal('hide');
+        }, function(error){
+            console.log(error);
+        });
+    };
 }])
